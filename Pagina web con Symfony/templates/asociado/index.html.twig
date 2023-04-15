@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Asociados{% endblock %}
+
+{% block body %}
+    {{  parent()}}
+    <!-- Principal Content Start -->
+    <div id="galeria">
+        <div class="container">
+            <div class="col-xs-12 col-sm-8 col-sm-push-2">
+                <h1>Asociados</h1>
+                <hr>
+                {% for message in app.flashes('exito') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {% for message in app.flashes('error') %}
+                    <div class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                <div class="form-group">
+                    {{ form(formulario) }}
+                </div>
+                <hr class="divider">
+                <div class="imagenes_galeria">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Logo</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for asociado in asociados  %}
+                            <tr>
+                                <th scope="row">{{ asociado.id }}</th>
+                                <td>{{ asociado.nombre }}</td>
+                                <td><img src="{{ asset('uploads/imagenes/') }}{{ asociado.logo }}" width="100px" alt="{{ asociado.logo }}" title="{{ asociado.logo }}"></td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Principal Content Start -->
+
+{% endblock %}
+{% block footer %}
+{% endblock %}

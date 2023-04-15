@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+{% block title%}Error{% endblock %}
+{% block body %}
+    {{ parent() }}
+    {% if app.request.attributes.get('exception').statusCode =='404' %}
+        <h1 >error 404 - NotFound </h1>
+        <h5>La pagina no existe</h5>
+    {% endif %}
+    {% if app.request.attributes.get('exception').statusCode == '403' %}
+        <h1 >Error 403 - Forbbiden</h1>
+        <h5>Acceso No Autorizado</h5>
+    {% endif %}
+{% endblock %}
+{% block footer %}
+{% endblock %}

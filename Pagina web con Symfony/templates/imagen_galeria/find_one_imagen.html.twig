@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}Imagen{% endblock %}
+{% block body %}
+    {{ parent() }}
+    {% if imagen == "vacio" %}
+        <h1 >error 404 - NotFound </h1>
+        <h5>La imagen con id -> {{ id }} no existe</h5>
+    {% else %}
+        <div class="container">
+            <h2>Imagen</h2>
+            <img src="{{ asset('uploads/imagenes/') }}{{ imagen.nombre }}">
+        </div>
+    {% endif %}
+{% endblock %}
+{% block footer %}
+{% endblock %}
+
